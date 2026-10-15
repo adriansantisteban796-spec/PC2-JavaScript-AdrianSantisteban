@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-// 1. Importa tu componente
+
 import { ReporteEstudiantes } from './componentes/reporte-estudiantes/reporte-estudiantes';
 
 @Component({
