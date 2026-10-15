@@ -32,7 +32,6 @@ export class ReporteEstudiantes implements OnInit {
     this.mostrarResultados = true;
   }
 
-  // Recibe las 3 notas del estudiante
   calcularPromedio(n1: number, n2: number, n3: number): number {
     const suma = n1 + n2 + n3;
     return parseFloat((suma / 3).toFixed(2));
