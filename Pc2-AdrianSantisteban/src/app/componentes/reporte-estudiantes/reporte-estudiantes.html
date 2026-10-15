@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Reporte de Estudiantes</h2>
+
+  <button (click)="generarReporte()" class="btn-calcular">
+    Calcular Promedio y Estados
+  </button>
+
+  <table class="tabla-estudiantes">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Nota 1</th>
+        <th>Nota 2</th>
+        <th>Nota 3</th>
+        @if (mostrarResultados) {
+          <th>Promedio</th>
+          <th>Estado / Observación</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (estudiante of estudiantes; track estudiante.id) {
+        <tr>
+          <td>{{ estudiante.id }}</td>
+          <td>{{ estudiante.nombre }}</td>
+          <td>{{ estudiante.nota1 }}</td>
+          <td>{{ estudiante.nota2 }}</td>
+          <td>{{ estudiante.nota3 }}</td>
+
+          @if (mostrarResultados) {
+            <td>
+              <strong>{{ calcularPromedio(estudiante.nota1, estudiante.nota2, estudiante.nota3) }}</strong>
+            </td>
+            <td>
+              {{ Estados(calcularPromedio(estudiante.nota1, estudiante.nota2, estudiante.nota3)) }}
+            </td>
+          }
+        </tr>
+      } @empty {
+        <tr>
+          <td [attr.colspan]="mostrarResultados ? 7 : 5" class="empty-msg">
+            Cargando lista de estudiantes desde la API...
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
